@@ -27,6 +27,16 @@ start_link() ->
 %%
 %% Memory management first generate unique id for the process, and (memory management
 %% backup data for both process, and identify data according to the unique memory id).
-start_process(Mod, Fun, Args) ->
-	1.
 
+
+%% Assign backup process for specific process
+%%-spec assign_process(pid()) -> 'ok'.
+%%
+assign_backup_process(Pid) ->
+	case magic_block_memory:start_backup(Pid) of
+		{ok, _} -> ok;
+		E -> E
+	end.
+
+
+	
