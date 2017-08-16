@@ -5,11 +5,13 @@
 %% supervisor for whole application
 
 -module(magic_block_sup).
-
+-behaviour(supervisor).
 -export([start/0,
 		 start_child_sup/1, start_child_sup/2, start_child_sup/3,
 		 start_child/1, start_child/2, start_child/3, start_child/4,
 		 stop_child/1]).
+
+-export([init/1]).
 
 %% ===========================================================================
 
@@ -55,6 +57,8 @@ stop_child(ChildId) ->
 		ok -> supervisor:delete_child(?MODULE, ChildId);
 		E  -> E
 	end.
+
+init([]) -> {ok, {{one_for_all, 0, 1}, []}}.
 
 %% Result of child process
 child_reply({ok, _Pid}) -> ok;
