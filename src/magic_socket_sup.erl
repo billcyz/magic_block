@@ -15,10 +15,14 @@
 %% ===========================================================================
 
 %% Start socket supervisor
-start_link() ->
-	supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+start_link(PortSpec) ->
+	supervisor:start_link({local, ?MODULE}, ?MODULE, [PortSpec]).
 
-init([]) ->
+init([PortSpec]) ->
+	
+	magic_block_socket:check_port(PortSpec),
+		
+	
 	{ok, {{one_for_all, 0, 1}, []}}.
 
 %% Start supervisor for UDP port and connection
@@ -32,7 +36,7 @@ start_udp_sup(Type, Port) when is_integer(Port) ->
 							infinity, supervisor, [udp_supervisor]}).
 
 %% Start supervisor for TCP port and connection
-start_ycp_sup(Type, Port) when is_integer(Port) ->
+start_tcp_sup(Type, Port) when is_integer(Port) ->
 	1.
 
 %% UDP Supervisor
@@ -40,3 +44,6 @@ udp_supervisor() -> 1.
 
 %% TCP Supervisor
 tcp_supervisor() -> 2.
+
+
+
