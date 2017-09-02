@@ -19,3 +19,5 @@ Components are a set of code blocks which are normally placed in one single file
 each component should provide their own API and startup method. (should design **component design behaviours**, which requires each component
 provide implementation method and APIs).
 
+Security
+
