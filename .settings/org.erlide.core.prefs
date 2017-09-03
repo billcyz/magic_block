@@ -4,4 +4,4 @@ external_includes=
 external_modules=
 include_dirs=include;
 output_dir=ebin
-source_dirs=src;test;
+source_dirs=src;test/assign_proc_2_other_sup;

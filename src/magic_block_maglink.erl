@@ -6,7 +6,9 @@
 
 -module(magic_block_maglink).
 
--export([]).
+-export([test/0]).
 
 %% ===========================================================================
 
+%% Create link according to incoming information
+create_link()
