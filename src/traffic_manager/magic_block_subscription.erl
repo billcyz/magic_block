@@ -1,8 +1,8 @@
 %% @author billcyz
-%% @doc @todo Add description to test.
+%% @doc @todo Add description to magic_block_subscription.
 
 
--module(test).
+-module(magic_block_subscription).
 
 %% ====================================================================
 %% API functions
